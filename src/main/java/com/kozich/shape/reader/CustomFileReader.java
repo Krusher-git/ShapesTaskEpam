@@ -16,13 +16,16 @@ import java.util.stream.Stream;
 
 public class CustomFileReader {
     private static final Logger logger = LogManager.getLogger();
-    private static final String ERROR_MESSAGE = "No matching lines";
+    private static final String ERROR_MESSAGE_LINE = "No matching lines";
+    private static final String ERROR_MESSAGE_FILE = "File is not valid";
 
-    public String ellipsePoints(String path) throws EllipseException {
+    public String readEllipsePoints(String path) throws EllipseException {
         ClassLoader classLoader = CustomFileReader.class.getClassLoader();
         URL temp = classLoader.getResource(path);
         String filePath = new File(temp.getFile()).getAbsolutePath();
-        DataValidator.isValidFile(filePath);
+        if (!DataValidator.isValidFile(filePath)) {
+            throw new EllipseException(ERROR_MESSAGE_FILE);
+        }
         Path streamPath = Paths.get(filePath);
         String pointsString = null;
         try (Stream<String> fileLines = Files.lines(streamPath)) {
@@ -34,7 +37,7 @@ public class CustomFileReader {
             throw new EllipseException(e);
         }
         if (pointsString == null) {
-            throw new EllipseException(ERROR_MESSAGE);
+            throw new EllipseException(ERROR_MESSAGE_LINE);
         }
         return pointsString;
     }
