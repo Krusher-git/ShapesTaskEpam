@@ -3,9 +3,13 @@ package com.kozich.shape.entity;
 import com.kozich.shape.util.EllipseCounter;
 
 public class EllipseFigure {
+    private final long ellipseId;
     private PointType firstPoint;
     private PointType secondPoint;
-    private final long ellipseId;
+
+    public EllipseFigure() {
+        ellipseId = EllipseCounter.generateCounter();
+    }
 
     public EllipseFigure(PointType firstPoint, PointType secondPoint) {
         this.firstPoint = firstPoint;

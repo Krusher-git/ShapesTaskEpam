@@ -6,15 +6,17 @@ import org.apache.logging.log4j.Logger;
 
 public class PointParser {
     private static Logger logger = LogManager.getLogger();
-    private static final String CONVERTER = "[\\s|,|(|)]+";
+    private static final String CONVERTER = "\\s+";
     private static final String INFO_MESSAGE = "Points were received";
 
     public double[] receivePointsArray(String pointString) {
-        String[] points = pointString.split(CONVERTER);
-        if (points.length < 4) {
+        String pointsString = pointString.replace('(', ' ')
+                .replace(')', ' ')
+                .replace(',', ' ');
+        String[] points = pointsString.trim().split(CONVERTER);
+        if (points.length != 4) {
             return null;
         }
-        //TODO: find, why does split produce "" string
         double[] pointsArray = new double[4];
         int i = 0;
         for (String point : points) {
