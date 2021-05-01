@@ -6,7 +6,8 @@ import org.testng.annotations.Test;
 
 public class CustomFileReaderTest {
     private static final String PATH = "data/resourceFile.txt";
-    private CustomFileReader fileReader = new CustomFileReader();
+    private static final String INCORRECT_PATH = "";
+    private final CustomFileReader fileReader = new CustomFileReader();
 
     @Test
     public void readEllipsePointsTest() throws EllipseException {
@@ -17,6 +18,6 @@ public class CustomFileReaderTest {
 
     @Test(expectedExceptions = EllipseException.class)
     public void readEllipsePointsThrowableTest() throws EllipseException {
-        fileReader.readEllipsePoints("");
+        fileReader.readEllipsePoints(INCORRECT_PATH);
     }
 }
