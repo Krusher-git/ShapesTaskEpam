@@ -7,6 +7,7 @@ import com.kozich.shape.service.EllipseParameterService;
 import com.kozich.shape.validator.DataValidator;
 
 public class EllipseParameterServiceImpl implements EllipseParameterService {
+
     @Override
     public double calculatePerimeter(EllipseFigure ellipse) throws EllipseException {
         if (!DataValidator.isEllipse(ellipse)) {

@@ -33,6 +33,10 @@ public class EllipseFigure {
         this.secondPoint = secondPoint;
     }
 
+    public long getEllipseId() {
+        return ellipseId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
