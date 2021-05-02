@@ -25,9 +25,6 @@ public class EllipseStatServiceImpl implements EllipseStatService {
     public boolean crossesAnyAxis(EllipseFigure ellipse) {
         PointType firstPoint = ellipse.getFirstPoint();
         PointType secondPoint = ellipse.getFirstPoint();
-        if (firstPoint.getX() * secondPoint.getX() < 0 || firstPoint.getY() * secondPoint.getY() < 0) {
-            return true;
-        }
-        return false;
+        return firstPoint.getX() * secondPoint.getX() < 0 || firstPoint.getY() * secondPoint.getY() < 0;
     }
 }
