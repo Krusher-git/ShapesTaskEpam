@@ -14,4 +14,6 @@ public interface Repository<T> {
     boolean removeAll(Collection<? extends T> elements);
 
     List<T> sort(Comparator<? super T> comparator);
+
+    List<T> query(Specification specification);
 }

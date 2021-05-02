@@ -2,6 +2,7 @@ package com.kozich.shape.repository.impl;
 
 import com.kozich.shape.entity.EllipseFigure;
 import com.kozich.shape.repository.Repository;
+import com.kozich.shape.repository.Specification;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -49,6 +50,14 @@ public class EllipseRepository implements Repository<EllipseFigure> {
     public List<EllipseFigure> sort(Comparator<? super EllipseFigure> comparator) {
         return ellipseFigureList.stream()
                 .sorted(comparator)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<EllipseFigure> query(Specification specification) {
+        List<EllipseFigure> ellipseList = new ArrayList<>(ellipseFigureList);
+        return ellipseList.stream()
+                .filter(specification::specify)
                 .collect(Collectors.toList());
     }
 }

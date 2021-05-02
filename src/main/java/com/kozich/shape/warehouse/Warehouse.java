@@ -1,9 +1,11 @@
 package com.kozich.shape.warehouse;
 
-import com.kozich.shape.entity.EllipseFigure;
+import com.kozich.shape.entity.EllipseParameters;
 
 public interface Warehouse {
-    boolean get(EllipseFigure ellipse);
-    boolean put(EllipseFigure ellipse);
-    boolean remove(EllipseFigure ellipse);
+    EllipseParameters get(long id);
+
+    EllipseParameters put(long id, EllipseParameters parameters);
+
+    EllipseParameters remove(long id);
 }
