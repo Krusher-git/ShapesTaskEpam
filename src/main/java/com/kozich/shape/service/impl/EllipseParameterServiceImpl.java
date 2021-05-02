@@ -39,7 +39,4 @@ public class EllipseParameterServiceImpl implements EllipseParameterService {
         double area = Math.PI * minorAxis * majorAxis;
         return area;
     }
-    public void bb(){
-
-    }
 }
