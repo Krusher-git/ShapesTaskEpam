@@ -19,7 +19,7 @@ public class CustomFileReader {
     private static final String ERROR_MESSAGE_LINE = "No matching lines";
     private static final String ERROR_MESSAGE_FILE = "File is not valid";
 
-    public String readEllipsePoints(String path) throws EllipseException {
+    public String[] readEllipsePoints(String path) throws EllipseException {
         ClassLoader classLoader = CustomFileReader.class.getClassLoader();
         URL temp = classLoader.getResource(path);
         String filePath = new File(temp.getFile()).getAbsolutePath();
@@ -27,16 +27,15 @@ public class CustomFileReader {
             throw new EllipseException(ERROR_MESSAGE_FILE);
         }
         Path streamPath = Paths.get(filePath);
-        String pointsString = null;
+        String[] pointsString;
         try (Stream<String> fileLines = Files.lines(streamPath)) {
             pointsString = fileLines.filter(DataValidator::isValidString)
-                    .findFirst()
-                    .orElse(null);
+                    .toArray(String[]::new);
         } catch (IOException e) {
             logger.log(Level.ERROR, e);
             throw new EllipseException(e);
         }
-        if (pointsString == null) {
+        if (pointsString.length < 1) {
             throw new EllipseException(ERROR_MESSAGE_LINE);
         }
         return pointsString;

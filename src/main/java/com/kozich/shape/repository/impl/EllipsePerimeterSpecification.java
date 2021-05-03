@@ -6,10 +6,12 @@ import com.kozich.shape.repository.Specification;
 import com.kozich.shape.service.impl.EllipseParameterServiceImpl;
 
 public class EllipsePerimeterSpecification implements Specification {
-    private double perimeter;
+    private double minPerimeter;
+    private double maxPerimeter;
 
-    public EllipsePerimeterSpecification(double perimeter) {
-        this.perimeter = perimeter;
+    public EllipsePerimeterSpecification(double minPerimeter, double maxPerimeter) {
+        this.minPerimeter = minPerimeter;
+        this.maxPerimeter = maxPerimeter;
     }
 
     @Override
@@ -21,6 +23,6 @@ public class EllipsePerimeterSpecification implements Specification {
         } catch (EllipseException e) {
             return false;
         }
-        return this.perimeter == perimeter;
+        return minPerimeter <= perimeter && maxPerimeter >= perimeter;
     }
 }

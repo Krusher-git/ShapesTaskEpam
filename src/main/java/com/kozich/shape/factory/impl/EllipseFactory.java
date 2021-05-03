@@ -5,6 +5,7 @@ import com.kozich.shape.entity.PointType;
 import com.kozich.shape.exception.EllipseException;
 import com.kozich.shape.factory.ShapeFactory;
 
+
 public class EllipseFactory extends ShapeFactory {
     private static final int POINTS_AMOUNT = 4;
     private static final String POINTS_ERROR_MESSAGE = "Error with incoming parameters, expected: 4, but found: ";

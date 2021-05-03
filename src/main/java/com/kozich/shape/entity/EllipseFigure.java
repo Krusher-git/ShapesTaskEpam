@@ -1,20 +1,26 @@
 package com.kozich.shape.entity;
 
+import com.kozich.shape.observer.EllipseObserver;
+import com.kozich.shape.observer.impl.EllipseObserverImpl;
 import com.kozich.shape.util.EllipseCounter;
+
 
 public class EllipseFigure {
     private final long ellipseId;
     private PointType firstPoint;
     private PointType secondPoint;
+    private final EllipseObserver<EllipseFigure> observer;
 
     public EllipseFigure() {
         ellipseId = EllipseCounter.generateCounter();
+        observer = new EllipseObserverImpl();
     }
 
     public EllipseFigure(PointType firstPoint, PointType secondPoint) {
         this.firstPoint = firstPoint;
         this.secondPoint = secondPoint;
         ellipseId = EllipseCounter.generateCounter();
+        observer = new EllipseObserverImpl();
     }
 
     public PointType getFirstPoint() {
@@ -23,6 +29,7 @@ public class EllipseFigure {
 
     public void setFirstPoint(PointType firstPoint) {
         this.firstPoint = firstPoint;
+        observer.update(this);
     }
 
     public PointType getSecondPoint() {
@@ -31,6 +38,7 @@ public class EllipseFigure {
 
     public void setSecondPoint(PointType secondPoint) {
         this.secondPoint = secondPoint;
+        observer.update(this);
     }
 
     public long getEllipseId() {
@@ -48,9 +56,6 @@ public class EllipseFigure {
 
         EllipseFigure that = (EllipseFigure) o;
 
-        if (ellipseId != that.ellipseId) {
-            return false;
-        }
         if (getFirstPoint() != null ? !getFirstPoint().equals(that.getFirstPoint()) : that.getFirstPoint() != null) {
             return false;
         }

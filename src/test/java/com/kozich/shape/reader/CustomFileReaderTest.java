@@ -12,8 +12,8 @@ public class CustomFileReaderTest {
     @Test
     public void readEllipsePointsTest() throws EllipseException {
         String expected = "(1.0, 2.3), (4.5, 8.4)";
-        String actual = fileReader.readEllipsePoints(PATH);
-        Assert.assertEquals(actual, expected);
+        String[] actual = fileReader.readEllipsePoints(PATH);
+        Assert.assertEquals(actual[0], expected);
     }
 
     @Test(expectedExceptions = EllipseException.class)
