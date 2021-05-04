@@ -5,7 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CustomFileReaderTest {
-    private static final String PATH = "data/resourceFile.txt";
+    private static final String PATH = "datatest/resourceFile.txt";
     private static final String INCORRECT_PATH = "";
     private final CustomFileReader fileReader = new CustomFileReader();
 

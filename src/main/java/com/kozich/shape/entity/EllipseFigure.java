@@ -14,6 +14,7 @@ public class EllipseFigure {
     public EllipseFigure() {
         ellipseId = EllipseCounter.generateCounter();
         observer = new EllipseObserverImpl();
+        observer.update(this);
     }
 
     public EllipseFigure(PointType firstPoint, PointType secondPoint) {
@@ -21,6 +22,7 @@ public class EllipseFigure {
         this.secondPoint = secondPoint;
         ellipseId = EllipseCounter.generateCounter();
         observer = new EllipseObserverImpl();
+        observer.update(this);
     }
 
     public PointType getFirstPoint() {
